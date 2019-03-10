@@ -51,8 +51,7 @@ class SensorsMqttService : Service(), BaseMqttModel {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
-        // TODO getting Build.SERIAL will no work on Android P
-        this.mqttCliendId = Build.SERIAL
+        this.mqttCliendId = MqttClient.generateClientId()
 
         if(intent == null) {
             logErrorMqtt("Null intent in onStartCommand, returning START_NOT_STICKY")
